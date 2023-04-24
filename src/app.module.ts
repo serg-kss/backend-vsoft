@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { FoldersModule } from './folders/folders.module';
 import { ConfigModule } from '@nestjs/config';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { ConfigModule } from '@nestjs/config';
       useUnifiedTopology: true,
     }),
     UsersModule, 
-    FoldersModule
+    FoldersModule, FilesModule
   ],
   controllers: [AppController],
   providers: [AppService],
