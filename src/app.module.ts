@@ -3,8 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
-import { FoldersService } from './folders/folders.service';
-import { FoldersController } from './folders/folders.controller';
 import { FoldersModule } from './folders/folders.module';
 import { ConfigModule } from '@nestjs/config';
 
@@ -20,7 +18,7 @@ import { ConfigModule } from '@nestjs/config';
     UsersModule, 
     FoldersModule
   ],
-  controllers: [AppController, FoldersController],
-  providers: [AppService, FoldersService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
