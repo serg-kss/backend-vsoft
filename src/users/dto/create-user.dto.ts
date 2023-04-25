@@ -1,7 +1,9 @@
 
 
 export class CreateUserDto {
-   readonly email: String;
-   readonly id: Number;
+   email: String;
+   name: String;
+   surname: String;
+   picture: String;
 
 }
