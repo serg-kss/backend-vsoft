@@ -1,5 +1,6 @@
 export class CreateFolderDto {
-   name: String;
-   id_user: Number;
-   id_folder: Number;
+   name: string;
+   created: string;
+   id_folder: string;
+   changes: [];
 }
