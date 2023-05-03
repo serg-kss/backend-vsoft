@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateFileDto } from './dto/create-file.dto';
 import { FilesService } from './files.service';
 
@@ -14,5 +14,10 @@ export class FilesController {
    @Get()
    getAll(){
      return this.fileService.findAll();
+   }
+
+   @Get('/folder/:id')
+   getFiles(@Param('id') id:string){
+     return this.fileService.findFilesInFolder(id);
    }
 }

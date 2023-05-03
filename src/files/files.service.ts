@@ -8,12 +8,18 @@ import { CreateFileDto } from './dto/create-file.dto';
 export class FilesService {
    constructor(@InjectModel('File') private fileModel: Model<IFile>){}
 
-   async create(createFileDto: CreateFileDto): Promise<IFile>  {
+   async create(createFileDto: CreateFileDto): Promise<IFile[]>  {
       const createdFile = new this.fileModel(createFileDto);
-      return createdFile.save();
+      createdFile.save();
+      return this.fileModel.find().exec();
     }
   
     async findAll(): Promise<IFile[]> {
       return this.fileModel.find().exec();
+    }
+
+    async findFilesInFolder(id: string) {
+      const filter  = { id_folder: id };  
+      return await this.fileModel.find(filter);
     }
 }

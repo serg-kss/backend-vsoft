@@ -9,18 +9,20 @@ import { UpdateFolderDto } from './dto/update-folder.dto';
 export class FoldersService {
    constructor(@InjectModel('Folder') private folderModel: Model<IFolder>){}
 
-    async create(createFolderDto: CreateFolderDto): Promise<IFolder>  {
+    async create(createFolderDto: CreateFolderDto): Promise<IFolder[]>  {
       const createdFolder = new this.folderModel(createFolderDto);
-      return createdFolder.save();
+      createdFolder.save();
+      return this.folderModel.find().exec();
     }
   
     async findAll(): Promise<IFolder[]> {
       return this.folderModel.find().exec();
     }
 
-    update(id: string, updateFolderDto: UpdateFolderDto) {
+    async update(id: string, updateFolderDto: UpdateFolderDto) {
       const filter = { id_folder: id };
-      return this.folderModel.updateOne(filter,updateFolderDto);
+      await this.folderModel.updateOne(filter,updateFolderDto);
+      return this.folderModel.find().exec();
     }
   
     async remove(id: string) {

@@ -1,6 +1,6 @@
 export class CreateFileDto {
-   file: String;
-   id_user: Number;
-   id_folder: Number;
-   privacy: Boolean;
+   file: string;
+   id_folder: string;
+   privacy: boolean;
+   email: string;
 }
